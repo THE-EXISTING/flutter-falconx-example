@@ -1,68 +1,66 @@
-import 'package:falconx/falconx.dart';
-import 'package:flutter/material.dart';
+// import 'package:falconx/falconx.dart';
+// import 'package:flutter_falconx_example/bootstrap.dart';
+// import 'package:flutter_falconx_example/src/app.dart';
 
-void main() {
-  runApp(const MyApp());
+// Future<void> main() async {
+//   WidgetsFlutterBinding.ensureInitialized();
+//   await bootstrap(
+//     () => const MyApp(
+//       key: ValueKey('T'),
+//     ),
+//   );
+// }
+
+import 'package:core/app.dart';
+import 'package:flutter_falconx_example/src/app.dart';
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await MyApp.setupBeforeRunApp();
+  await runApplication();
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+Future<void> runApplication({Widget? testWidget, Locale? locale}) async {
+  final debugOptions = setupCatcherDebugOptions();
+  final releaseOptions = setupCatcherReleaseOptions();
+  Catcher(
+    ensureInitialized: true,
+    debugConfig: debugOptions,
+    releaseConfig: releaseOptions,
+    runAppFunction: () async => runApp(
+      const DebugRestartWidget(
+        child: MyApp(),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
+    ),
+    // await SentryFlutter.init(
+    //   (dynamic options) {},
+    //   appRunner: () => runApp(
+    //     const DebugRestartWidget(
+    //       child: MyApp(
+    //         key: ValueKey('x'),
+    //       ),
+    //     ),
+    //   ),
+    // child: AppMigration(
+    //   child: MyApp(
+    //     key: ValueKey('x'),
+    //   ),
+    // ),
+    // appRunner: () {
+    //   return runApp(
+    //     const DebugRestartWidget(
+    //       child: AppMigration(
+    //         child: MyApp(
+    //           key: ValueKey('x'),
+    //         ),
+    //       ),
+    //     ),
+    //   );
+    // },
+  );
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
-    );
-  }
-}
+CatcherOptions setupCatcherReleaseOptions() =>
+    CatcherOptions.getDefaultReleaseOptions();
+CatcherOptions setupCatcherDebugOptions() =>
+    CatcherOptions.getDefaultDebugOptions();

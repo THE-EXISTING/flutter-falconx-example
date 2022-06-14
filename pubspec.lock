@@ -142,7 +142,7 @@ packages:
     source: hosted
     version: "4.1.1"
   catcher:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: catcher
       url: "https://pub.dartlang.org"
@@ -1084,6 +1084,13 @@ packages:
     dependency: transitive
     description:
       name: sentry
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "6.5.1"
+  sentry_flutter:
+    dependency: "direct main"
+    description:
+      name: sentry_flutter
       url: "https://pub.dartlang.org"
     source: hosted
     version: "6.5.1"

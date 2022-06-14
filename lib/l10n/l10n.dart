@@ -35,3 +35,7 @@ class L10n {
     return locale;
   }
 }
+
+extension AppLocalizationsX on BuildContext {
+  AppLocalizations get l10n => AppLocalizations.of(this);
+}
