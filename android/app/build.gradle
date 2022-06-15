@@ -44,22 +44,68 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.example.flutter_falconx_example"
+        applicationId "com.existing.falconx"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-build-configuration.
-        minSdkVersion flutter.minSdkVersion
+        minSdkVersion 19
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+        multiDexEnabled true
     }
+    signingConfigs {
+        debug {
+            def alias = System.getenv("SIGNING_KEY_ALIAS")
+            def pass = System.getenv("SIGNING_PASSWORD")
 
-    buildTypes {
+            if(alias != null && pass != null){
+                // Build with git action.
+                def tmpFilePath = System.getProperty("user.home") + "/work/_temp/keystore/"
+                def allFilesFromDir = new File(tmpFilePath).listFiles()
+                def keystoreFile = allFilesFromDir.first()
+                storeFile keystoreFile
+                keyAlias alias
+                storePassword pass
+                keyPassword pass
+            } else{
+                // Build with locale.
+                storeFile file(localProperties.getProperty('KEYSTORE_FILE_DEBUG'))
+                keyAlias localProperties.getProperty('KEYSTORE_ALIAS_DEBUG')
+                storePassword localProperties.getProperty('KEYSTORE_PASSWORD_DEBUG')
+                keyPassword localProperties.getProperty('KEYSTORE_PASSWORD_DEBUG')
+            }
+        }
+
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig signingConfigs.debug
+            def alias = System.getenv("SIGNING_KEY_ALIAS")
+            def pass = System.getenv("SIGNING_PASSWORD")
+
+            if(alias != null && pass != null){
+                // Build with git action.
+                def tmpFilePath = System.getProperty("user.home") + "/work/_temp/keystore/"
+                def allFilesFromDir = new File(tmpFilePath).listFiles()
+                def keystoreFile = allFilesFromDir.first()
+                storeFile keystoreFile
+                keyAlias alias
+                storePassword pass
+                keyPassword pass
+            } else{
+                // Build with locale.
+                storeFile file(localProperties.getProperty('KEYSTORE_FILE'))
+                keyAlias localProperties.getProperty('KEYSTORE_ALIAS')
+                storePassword localProperties.getProperty('KEYSTORE_PASSWORD')
+                keyPassword localProperties.getProperty('KEYSTORE_PASSWORD')
+            }
         }
     }
+    buildTypes {
+        release {
+
+            signingConfig signingConfigs.release
+        }
+    }
+
+
 }
 
 flutter {
@@ -67,5 +113,7 @@ flutter {
 }
 
 dependencies {
+    implementation 'com.android.support:multidex:2.0.1'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'com.google.android.material:material:1.6.1'
 }

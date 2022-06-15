@@ -105,9 +105,9 @@ PODS:
     - Flutter
   - path_provider_ios (0.0.1):
     - Flutter
-  - "permission_handler (5.1.0+2)":
+  - permission_handler_apple (9.0.4):
     - Flutter
-  - photo_manager (1.0.0):
+  - photo_manager (2.0.0):
     - Flutter
     - FlutterMacOS
   - PromisesObjC (2.1.0)
@@ -118,13 +118,6 @@ PODS:
   - SDWebImageWebPCoder (0.8.4):
     - libwebp (~> 1.0)
     - SDWebImage/Core (~> 5.10)
-  - Sentry (7.11.0):
-    - Sentry/Core (= 7.11.0)
-  - Sentry/Core (7.11.0)
-  - sentry_flutter (0.0.1):
-    - Flutter
-    - FlutterMacOS
-    - Sentry (~> 7.11.0)
   - share (0.0.1):
     - Flutter
   - sqflite (0.0.2):
@@ -156,9 +149,8 @@ DEPENDENCIES:
   - fluttertoast (from `.symlinks/plugins/fluttertoast/ios`)
   - package_info_plus (from `.symlinks/plugins/package_info_plus/ios`)
   - path_provider_ios (from `.symlinks/plugins/path_provider_ios/ios`)
-  - permission_handler (from `.symlinks/plugins/permission_handler/ios`)
+  - permission_handler_apple (from `.symlinks/plugins/permission_handler_apple/ios`)
   - photo_manager (from `.symlinks/plugins/photo_manager/ios`)
-  - sentry_flutter (from `.symlinks/plugins/sentry_flutter/ios`)
   - share (from `.symlinks/plugins/share/ios`)
   - sqflite (from `.symlinks/plugins/sqflite/ios`)
   - url_launcher_ios (from `.symlinks/plugins/url_launcher_ios/ios`)
@@ -183,7 +175,6 @@ SPEC REPOS:
     - ReachabilitySwift
     - SDWebImage
     - SDWebImageWebPCoder
-    - Sentry
     - Toast
 
 EXTERNAL SOURCES:
@@ -217,12 +208,10 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/package_info_plus/ios"
   path_provider_ios:
     :path: ".symlinks/plugins/path_provider_ios/ios"
-  permission_handler:
-    :path: ".symlinks/plugins/permission_handler/ios"
+  permission_handler_apple:
+    :path: ".symlinks/plugins/permission_handler_apple/ios"
   photo_manager:
     :path: ".symlinks/plugins/photo_manager/ios"
-  sentry_flutter:
-    :path: ".symlinks/plugins/sentry_flutter/ios"
   share:
     :path: ".symlinks/plugins/share/ios"
   sqflite:
@@ -263,14 +252,12 @@ SPEC CHECKSUMS:
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   package_info_plus: 6c92f08e1f853dc01228d6f553146438dafcd14e
   path_provider_ios: 14f3d2fd28c4fdb42f44e0f751d12861c43cee02
-  permission_handler: ccb20a9fad0ee9b1314a52b70b76b473c5f8dab0
-  photo_manager: 84fa94fbeb82e607333ea9a13c43b58e0903a463
+  permission_handler_apple: 44366e37eaf29454a1e7b1b7d736c2cceaeb17ce
+  photo_manager: 4f6810b7dfc4feb03b461ac1a70dacf91fba7604
   PromisesObjC: 99b6f43f9e1044bd87a95a60beff28c2c44ddb72
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   SDWebImage: a47aea9e3d8816015db4e523daff50cfd294499d
   SDWebImageWebPCoder: f93010f3f6c031e2f8fb3081ca4ee6966c539815
-  Sentry: 0c5cd63d714187b4a39c331c1f0eb04ba7868341
-  sentry_flutter: efb3df2c203cd03aad255892a8d628a458656d14
   share: 0b2c3e82132f5888bccca3351c504d0003b3b410
   sqflite: 6d358c025f5b867b29ed92fc697fd34924e11904
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196

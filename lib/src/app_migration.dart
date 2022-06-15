@@ -18,7 +18,7 @@ class AppMigration extends AppComponent {
               if (state is AppMigrationFinished) {
                 return child;
               }
-              print('==========> app_migration.dart');
+              logger.i('==========> app_migration.dart');
               return AppSplashScreen.create();
             },
           );

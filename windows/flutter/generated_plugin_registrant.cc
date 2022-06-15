@@ -9,7 +9,7 @@
 #include <catcher/catcher_plugin.h>
 #include <connectivity_plus_windows/connectivity_plus_windows_plugin.h>
 #include <flutter_secure_storage_windows/flutter_secure_storage_windows_plugin.h>
-#include <sentry_flutter/sentry_flutter_plugin.h>
+#include <permission_handler_windows/permission_handler_windows_plugin.h>
 #include <url_launcher_windows/url_launcher_windows.h>
 
 void RegisterPlugins(flutter::PluginRegistry* registry) {
@@ -19,8 +19,8 @@ void RegisterPlugins(flutter::PluginRegistry* registry) {
       registry->GetRegistrarForPlugin("ConnectivityPlusWindowsPlugin"));
   FlutterSecureStorageWindowsPluginRegisterWithRegistrar(
       registry->GetRegistrarForPlugin("FlutterSecureStorageWindowsPlugin"));
-  SentryFlutterPluginRegisterWithRegistrar(
-      registry->GetRegistrarForPlugin("SentryFlutterPlugin"));
+  PermissionHandlerWindowsPluginRegisterWithRegistrar(
+      registry->GetRegistrarForPlugin("PermissionHandlerWindowsPlugin"));
   UrlLauncherWindowsRegisterWithRegistrar(
       registry->GetRegistrarForPlugin("UrlLauncherWindows"));
 }

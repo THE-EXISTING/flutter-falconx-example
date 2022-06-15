@@ -142,7 +142,7 @@ packages:
     source: hosted
     version: "4.1.1"
   catcher:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: catcher
       url: "https://pub.dartlang.org"
@@ -391,7 +391,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "272fdcc5c083c2a90f8598e568017b77d533a8ad"
+      resolved-ref: e71d38b9924f90fb67c5bdcc852b2343dbec4bfc
       url: "https://github.com/721945/flaconx_package.git"
     source: git
     version: "0.0.1"
@@ -981,7 +981,21 @@ packages:
       name: permission_handler
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "8.3.0"
+    version: "9.2.0"
+  permission_handler_android:
+    dependency: transitive
+    description:
+      name: permission_handler_android
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "9.0.2+1"
+  permission_handler_apple:
+    dependency: transitive
+    description:
+      name: permission_handler_apple
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "9.0.4"
   permission_handler_platform_interface:
     dependency: transitive
     description:
@@ -989,6 +1003,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.7.0"
+  permission_handler_windows:
+    dependency: transitive
+    description:
+      name: permission_handler_windows
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.0"
   petitparser:
     dependency: transitive
     description:
@@ -1002,7 +1023,7 @@ packages:
       name: photo_manager
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.3.10"
+    version: "2.1.2"
   pin_code_fields:
     dependency: transitive
     description:
@@ -1084,13 +1105,6 @@ packages:
     dependency: transitive
     description:
       name: sentry
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "6.5.1"
-  sentry_flutter:
-    dependency: "direct main"
-    description:
-      name: sentry_flutter
       url: "https://pub.dartlang.org"
     source: hosted
     version: "6.5.1"
@@ -1308,7 +1322,7 @@ packages:
       name: uuid
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.0.5"
+    version: "3.0.6"
   vector_math:
     dependency: transitive
     description:
@@ -1441,7 +1455,7 @@ packages:
       name: wechat_assets_picker
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "6.3.1"
+    version: "7.3.2"
   win32:
     dependency: transitive
     description:
@@ -1471,5 +1485,5 @@ packages:
     source: hosted
     version: "3.1.1"
 sdks:
-  dart: ">=2.17.3 <3.0.0"
+  dart: ">=2.17.1 <3.0.0"
   flutter: ">=3.0.0"
