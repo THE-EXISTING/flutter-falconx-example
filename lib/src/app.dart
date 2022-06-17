@@ -6,9 +6,7 @@ class MyApp extends ApplicationX {
   const MyApp() : super(key: const Key('MyApplication'));
 
   static Future<void> setupBeforeRunApp() async {
-    // if (Platform.isAndroid || Platform.isIOS) {
     await FlutterConfig.loadEnvVariables();
-    // }
     await SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
     ]);
@@ -25,11 +23,10 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp.router(
       routeInformationParser: AppRouter.router.routeInformationParser,
       routerDelegate: AppRouter.router.routerDelegate,
-      // title: Strings.counterAppBarTitle,
       supportedLocales: L10n.all,
-      restorationScopeId: 'App',
+      restorationScopeId: 'MyApplication',
       localeResolutionCallback: L10n.localeResolutionCallback,
-      // onGenerateTitle: (BuildContext context) => BuildConfig.APP_NAME,
+      onGenerateTitle: (context) => FlutterConfig.get('APP_NAME') as String,
       localizationsDelegates: L10n.localizationsDelegates,
       theme: ThemeData(),
     );
