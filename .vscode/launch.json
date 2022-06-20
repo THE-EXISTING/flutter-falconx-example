@@ -8,7 +8,8 @@
       "name": "flutter_falconx_example",
       "request": "launch",
       "type": "dart",
-      "internalConsoleOptions": "openOnSessionStart"
+      "internalConsoleOptions": "openOnSessionStart",
+      "args": ["--flavor", "dev"]
     },
 
     {
