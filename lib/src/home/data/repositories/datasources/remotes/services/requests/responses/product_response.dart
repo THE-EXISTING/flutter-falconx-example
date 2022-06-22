@@ -24,7 +24,11 @@ class ProductResponse extends ResponseData {
       );
 
   factory ProductResponse.fromJson(Map<String, dynamic>? json) {
-    if (json == null) return ProductResponse.empty();
+    final js = <String, dynamic>{...?json}
+      ..removeWhere((key, dynamic _) => key == 'id');
+    if (json == null || js.isEmpty) {
+      return ProductResponse.empty();
+    }
     return ProductResponse(
       productId: json[PRODUCT_ID_FIELD] as String,
       name: json[NAME_FIELD] as String,

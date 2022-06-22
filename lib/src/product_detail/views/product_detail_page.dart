@@ -46,7 +46,7 @@ class _ProductDetailPageState extends ScreenLocaleScaffoldBlocStateX<
   Widget buildBody(BuildContext context, Resource<ProductModel?> resource) {
     showPageLoadingIndicatorFromResource(resource);
     final product = resource.data;
-    if (product == null) {
+    if (product == null || product == ProductModel.empty()) {
       return buildBodyEmpty(context, resource);
     }
     return Column(
@@ -97,48 +97,3 @@ class _ProductDetailPageState extends ScreenLocaleScaffoldBlocStateX<
     );
   }
 }
-
-// class _ProductDetailPageState extends LocaleStateX<ProductDetailPage> {
-//   final product = ProductModel.mock();
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         leading: const BackButton(
-//           color: Colors.black,
-//         ),
-//         backgroundColor: Colors.transparent,
-//         elevation: 0,
-//       ),
-//       extendBodyBehindAppBar: true,
-//       body: Column(
-//         children: [
-//           Expanded(
-//             child: SingleChildScrollView(
-//               child: Column(
-//                 crossAxisAlignment: CrossAxisAlignment.start,
-//                 children: <Widget>[
-//                   ProductImageCarousel(
-//                     imagePathList: product.imageList,
-//                   ),
-//                   Space.height12,
-//                   ProductTitle(product: product),
-//                   Space.height12,
-//                   const ProductSeller(),
-//                   Container(
-//                     width: context.screenWidth,
-//                     color: AppColors.blackDivider,
-//                     child: Space.height12,
-//                   ),
-//                   ProductDetail(product: product),
-//                   Space.height24,
-//                 ],
-//               ),
-//             ),
-//           ),
-//           const BottomButton(),
-//         ],
-//       ),
-//     );
-//   }
-// }
