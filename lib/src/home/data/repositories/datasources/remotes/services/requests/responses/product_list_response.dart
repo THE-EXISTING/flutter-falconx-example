@@ -8,6 +8,14 @@ class ProductListResponse extends ResponseData {
     required this.products,
   });
 
+  factory ProductListResponse.fromDocs(
+    List<Map<String, dynamic>> json,
+  ) {
+    return ProductListResponse(
+      products: json.map(ProductResponse.fromJson).toList(),
+    );
+  }
+
   static const PRODUCTS_FIELD = 'products';
 
   final List<ProductResponse> products;

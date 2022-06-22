@@ -10,6 +10,7 @@ Future<void> main() async {
 Future<void> runApplication({Widget? testWidget, Locale? locale}) async {
   final debugOptions = setupCatcherDebugOptions();
   final releaseOptions = setupCatcherReleaseOptions();
+
   Catcher(
     ensureInitialized: true,
     debugConfig: debugOptions,

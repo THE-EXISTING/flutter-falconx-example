@@ -7,12 +7,11 @@ class ProductListModel extends AppModel<ProductListModel> {
     required this.productList,
   });
 
-  factory ProductListModel.fromMapResponse(ProductListResponse response) =>
-      ProductListModel(
-        productList: response.products
-            .map((e) => ProductModel.fromMap(e as Map<String, dynamic>))
-            .toList(),
-      );
+  factory ProductListModel.fromMapResponse(ProductListResponse response) {
+    return ProductListModel(
+      productList: response.products.map(ProductModel.fromResponse).toList(),
+    );
+  }
 
   factory ProductListModel.empty() => ProductListModel(productList: []);
 

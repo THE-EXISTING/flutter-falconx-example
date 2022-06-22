@@ -12,6 +12,7 @@ class ProductResponse extends ResponseData {
     required this.category,
     required this.rating,
   });
+
   factory ProductResponse.empty() => ProductResponse(
         productId: '',
         name: '',
@@ -22,22 +23,35 @@ class ProductResponse extends ResponseData {
         rating: 0,
       );
 
-  static Future<ProductResponse> fromJson(Map<String, dynamic>? json) async {
+  factory ProductResponse.fromJson(Map<String, dynamic>? json) {
     if (json == null) return ProductResponse.empty();
     return ProductResponse(
       productId: json[PRODUCT_ID_FIELD] as String,
       name: json[NAME_FIELD] as String,
       price: json[PRICE_FIELD] as double,
-      imageList: json[IMG_FIELD] as List<String>,
+      imageList: (json[IMG_FIELD] as List<dynamic>)
+          .map((dynamic e) => e as String)
+          .toList(),
       description: json[DESCRIPTION_FIELD] as String? ?? '',
       category: json[CATEGORY_FIELD] as String,
       rating: json[RATING_FIELD] as double,
     );
   }
 
-  static const String PRODUCT_ID_FIELD = 'productID';
+  Map<String, Object?> toJson() {
+    return {
+      NAME_FIELD: name,
+      IMG_FIELD: imageList,
+      PRICE_FIELD: price,
+      DESCRIPTION_FIELD: description,
+      CATEGORY_FIELD: category,
+      RATING_FIELD: rating,
+    };
+  }
+
+  static const String PRODUCT_ID_FIELD = 'id';
   static const String NAME_FIELD = 'name';
-  static const String IMG_FIELD = 'img';
+  static const String IMG_FIELD = 'images';
   static const String PRICE_FIELD = 'price';
   static const String DESCRIPTION_FIELD = 'description';
   static const String CATEGORY_FIELD = 'category';

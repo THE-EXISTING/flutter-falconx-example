@@ -10,6 +10,9 @@ abstract class ProductServiceInterface {
   });
 
   Future<ProductListResponse> getProducts();
+  Future<ProductResponse> addProduct({
+    required Map<String, dynamic> product,
+  });
 }
 
 class ProductFirebaseService extends FirebaseApiService
@@ -20,20 +23,23 @@ class ProductFirebaseService extends FirebaseApiService
   Future<ProductResponse> getProductById({
     required String id,
   }) {
-    final response = firestore.collection(PRODUCT_COLLECTION).doc(id).get();
-    return response.then(
-      (snapshot) => ProductResponse.fromJson(
-        snapshot.data(),
-      ),
+    return getOne(
+      PRODUCT_COLLECTION,
+      id,
+      converter: ProductResponse.fromJson,
     );
   }
 
   @override
   Future<ProductListResponse> getProducts() async {
-    // final response = await firestore.collection(PRODUCT_COLLECTION).get();
-    // return response.docs
-    //     .map((e) => ProductResponse.fromJson(e as Map<String, dynamic>?))
-    //     .toList();
+    return getDocs(
+      PRODUCT_COLLECTION,
+      converter: ProductListResponse.fromDocs,
+    );
+  }
+
+  @override
+  Future<ProductResponse> addProduct({required Map<String, dynamic> product}) {
     throw UnimplementedError();
   }
 }

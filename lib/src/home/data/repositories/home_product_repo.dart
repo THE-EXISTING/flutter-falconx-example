@@ -2,7 +2,7 @@ import 'package:core/app.dart';
 import 'package:flutter_falconx_example/src/home/home.dart';
 
 abstract class HomeProductRepositoryInterface {
-  Stream<Resource<List<ProductModel>>> getProducts();
+  Stream<Resource<ProductListModel>> getProducts();
 
   Stream<Resource<ProductModel>> getProductById({required String id});
 }
@@ -16,8 +16,9 @@ class ProductRepository implements HomeProductRepositoryInterface {
 
   @override
   Stream<Resource<ProductModel>> getProductById({required String id}) {
-    return NetworkBoundResource.asStream(
+    return NetworkBoundResource.asStream<ProductModel, ProductResponse>(
       createCallFuture: () => _productDatasource.getProductById(id: id),
+      processResponse: ProductModel.fromResponse,
       error: (dynamic exception, StackTrace stackTrace) {
         Log.e(exception, stackTrace);
       },
@@ -25,10 +26,10 @@ class ProductRepository implements HomeProductRepositoryInterface {
   }
 
   @override
-  Stream<Resource<List<ProductModel>>> getProducts() {
-    return NetworkBoundResource.asStream<List<ProductModel>,
-        ProductListResponse>(
+  Stream<Resource<ProductListModel>> getProducts() {
+    return NetworkBoundResource.asStream<ProductListModel, ProductListResponse>(
       createCallFuture: _productDatasource.getProducts,
+      processResponse: ProductListModel.fromMapResponse,
       error: (dynamic exception, StackTrace stackTrace) {
         Log.e(exception, stackTrace);
       },

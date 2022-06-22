@@ -1,4 +1,5 @@
 import 'package:core/app.dart';
+import 'package:flutter_falconx_example/src/home/home.dart';
 
 class ProductModel extends AppModel<ProductModel> {
   ProductModel({
@@ -23,6 +24,18 @@ class ProductModel extends AppModel<ProductModel> {
       description: map['description'] as String? ?? '',
       category: map['category'] as String? ?? '',
       rating: (map['rating'] as num?)?.toDouble() ?? 0.0,
+    );
+  }
+
+  factory ProductModel.fromResponse(ProductResponse response) {
+    return ProductModel(
+      id: response.productId,
+      name: response.name,
+      price: response.price,
+      imageList: response.imageList,
+      description: response.description,
+      category: response.category,
+      rating: response.rating,
     );
   }
 
