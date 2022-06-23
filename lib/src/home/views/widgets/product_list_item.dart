@@ -93,6 +93,8 @@ class ProductList extends StatelessWidget {
     return Text(
       product.name,
       style: AppTextStyle.primary.body1.primary,
+      maxLines: 2,
+      overflow: TextOverflow.ellipsis,
     );
   }
 

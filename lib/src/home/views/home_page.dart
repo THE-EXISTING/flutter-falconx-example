@@ -94,6 +94,7 @@ class _HomeMainPageState extends ScreenLocaleScaffoldBlocStateX<HomeMainPage,
       padding: AppSize.listVerticalPadding,
       mainAxisSpacing: AppSize.gapSize,
       crossAxisSpacing: AppSize.gapSize,
+      childAspectRatio: 6 / 10,
       children: List.generate(
         resource.data?.productList.length ?? 0,
         (i) => ProductGrid(

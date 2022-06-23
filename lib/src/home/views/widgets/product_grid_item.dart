@@ -42,10 +42,14 @@ class ProductGrid extends AppComponent {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                _buildImageCarousel(context),
+                _buildImage(context),
                 Expanded(
+                  flex: 2,
                   child: Padding(
-                    padding: AppSize.allInsets,
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: AppSize.symmetricHorizontal / 2,
+                      vertical: AppSize.symmetricVertical,
+                    ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -102,15 +106,16 @@ class ProductGrid extends AppComponent {
     return Text(
       product.name,
       style: AppTextStyle.primary.body1.primary,
+      maxLines: 2,
     );
   }
 
-  Widget _buildImageCarousel(BuildContext context) {
+  Widget _buildImage(BuildContext context) {
     return Expanded(
       flex: 3,
       child: NetworkImageX.rect(
         imageUrl: product.imageList.first,
-        width: context.screenWidth,
+        width: context.screenWidth / 2 - 20,
         height: double.infinity,
         loadingColor: AppColors.blackLoading,
       ),

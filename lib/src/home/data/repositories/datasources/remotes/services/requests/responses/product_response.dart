@@ -32,13 +32,13 @@ class ProductResponse extends ResponseData {
     return ProductResponse(
       productId: json[PRODUCT_ID_FIELD] as String,
       name: json[NAME_FIELD] as String,
-      price: json[PRICE_FIELD] as double,
+      price: (json[PRICE_FIELD] as num).toDoubleOrZero(),
       imageList: (json[IMG_FIELD] as List<dynamic>)
           .map((dynamic e) => e as String)
           .toList(),
       description: json[DESCRIPTION_FIELD] as String? ?? '',
       category: json[CATEGORY_FIELD] as String,
-      rating: json[RATING_FIELD] as double,
+      rating: (json[RATING_FIELD] as num).toDoubleOrZero(),
     );
   }
 
