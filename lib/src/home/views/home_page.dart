@@ -29,11 +29,17 @@ class _HomeMainPageState extends ScreenLocaleScaffoldBlocStateX<HomeMainPage,
     showPageLoadingIndicatorFromResource(resource);
     return Column(
       children: [
-        Row(
-          children: [
-            _buildTitle(),
-            _buildChangeDisplay(),
-          ],
+        SafeArea(
+          bottom: false,
+          child: Padding(
+            padding: AppSize.allInsets,
+            child: Row(
+              children: [
+                _buildTitle(),
+                _buildChangeDisplay(),
+              ],
+            ),
+          ),
         ),
         Expanded(
           child: isDisplayGrid
@@ -45,33 +51,25 @@ class _HomeMainPageState extends ScreenLocaleScaffoldBlocStateX<HomeMainPage,
   }
 
   Widget _buildChangeDisplay() {
-    return Padding(
-      padding: const EdgeInsets.all(
-        AppSize.symmetricHorizontal,
+    return IconButton(
+      icon: Icon(
+        !isDisplayGrid ? Icons.grid_view_rounded : Icons.list_alt_rounded,
+        size: 24,
+        color: AppColors.black,
       ),
-      child: IconButton(
-        icon: Icon(
-          !isDisplayGrid ? Icons.grid_view_rounded : Icons.list_alt_rounded,
-          size: 24,
-          color: Colors.blue,
-        ),
-        onPressed: () {
-          setState(() {
-            isDisplayGrid = !isDisplayGrid;
-          });
-        },
-      ),
+      onPressed: () {
+        setState(() {
+          isDisplayGrid = !isDisplayGrid;
+        });
+      },
     );
   }
 
   Widget _buildTitle() {
     return Expanded(
-      child: Padding(
-        padding: AppSize.symmetricHorizontalInsets,
-        child: Text(
-          'สินค้า',
-          style: AppTextStyle.primary.h5.normal,
-        ),
+      child: Text(
+        'สินค้า',
+        style: AppTextStyle.primary.h5.normal,
       ),
     );
   }

@@ -15,9 +15,12 @@ class MyApp extends ApplicationX {
       options: DefaultFirebaseOptions.currentPlatform,
     );
     final deviceInfo = DeviceInfoPlugin();
-    final androidInfo = await deviceInfo.androidInfo;
-    final isTV =
-        androidInfo.systemFeatures.contains('android.software.leanback_only');
+    var isTV = false;
+    if (Platform.isAndroid) {
+      final androidInfo = await deviceInfo.androidInfo;
+      isTV =
+          androidInfo.systemFeatures.contains('android.software.leanback_only');
+    }
     await SystemChrome.setPreferredOrientations([
       if (isTV)
         DeviceOrientation.landscapeLeft

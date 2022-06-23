@@ -74,7 +74,7 @@ class ProductList extends StatelessWidget {
 
   Widget _buildRating() {
     return SizedBox(
-      height: 24,
+      height: 22,
       child: ListView.separated(
         shrinkWrap: true,
         itemCount: product.rating.toInt(),
@@ -84,7 +84,7 @@ class ProductList extends StatelessWidget {
           size: 24,
           color: Colors.amber,
         ),
-        separatorBuilder: (_, __) => AppSize.listSeparator,
+        separatorBuilder: (_, __) => AppSize.listSmallSeparator,
       ),
     );
   }
