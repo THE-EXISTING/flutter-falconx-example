@@ -89,12 +89,13 @@ class _HomeMainPageState extends ScreenLocaleScaffoldBlocStateX<HomeMainPage,
   }
 
   Widget _buildProductsGrid(Resource<ProductListModel?> resource) {
-    return GridView.count(
-      crossAxisCount: 2,
-      padding: AppSize.listVerticalPadding,
-      mainAxisSpacing: AppSize.gapSize,
-      crossAxisSpacing: AppSize.gapSize,
-      childAspectRatio: 6 / 10,
+    return AppResponsiveGridList(
+      minItemWidth: 190,
+      minItemsPerRow: 2,
+      // padding: AppSize.listVerticalPadding,
+      verticalGridSpacing: AppSize.gapSize,
+      horizontalGridSpacing: AppSize.gapSize,
+      // childAspectRatio: 6 / 10,
       children: List.generate(
         resource.data?.productList.length ?? 0,
         (i) => ProductGrid(
@@ -102,5 +103,18 @@ class _HomeMainPageState extends ScreenLocaleScaffoldBlocStateX<HomeMainPage,
         ),
       ),
     );
+    // return GridView.count(
+    //   crossAxisCount: 2,
+    //   padding: AppSize.listVerticalPadding,
+    //   mainAxisSpacing: AppSize.gapSize,
+    //   crossAxisSpacing: AppSize.gapSize,
+    //   childAspectRatio: 6 / 10,
+    //   children: List.generate(
+    //     resource.data?.productList.length ?? 0,
+    //     (i) => ProductGrid(
+    //       product: resource.data!.productList[i],
+    //     ),
+    //   ),
+    // );
   }
 }
