@@ -7,6 +7,7 @@ class AppRouter {
   static const String detail = 'detail';
 
   static final GoRouter router = GoRouter(
+    urlPathStrategy: UrlPathStrategy.path,
     routes: _routes,
   );
 

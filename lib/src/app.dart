@@ -1,5 +1,5 @@
 import 'package:core/app.dart';
-import 'package:device_info_plus/device_info_plus.dart';
+import 'package:core/config/app_platform.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_falconx_example/core/core.dart';
 import 'package:flutter_falconx_example/firebase_options.dart';
@@ -14,20 +14,13 @@ class MyApp extends ApplicationX {
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
     );
-    final deviceInfo = DeviceInfoPlugin();
-    var isTV = false;
-    if (Platform.isAndroid) {
-      final androidInfo = await deviceInfo.androidInfo;
-      isTV =
-          androidInfo.systemFeatures.contains('android.software.leanback_only');
-    }
     await SystemChrome.setPreferredOrientations([
-      if (isTV)
+      if (AppPlatform.isTv)
         DeviceOrientation.landscapeLeft
       else
         DeviceOrientation.portraitUp,
-      // DeviceOrientation.portraitUp,
     ]);
+
     EquatableConfig.stringify = BuildConfig.DEBUG;
   }
 
