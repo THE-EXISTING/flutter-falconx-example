@@ -1,6 +1,7 @@
 library core;
 
 export 'package:falconx/falconx.dart';
+export 'package:flutter_dotenv/flutter_dotenv.dart';
 
 export 'blocs/blocs.dart';
 export 'database/database.dart';

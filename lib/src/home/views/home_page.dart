@@ -1,70 +1,118 @@
-// Copyright (c) 2022, Very Good Ventures
-// https://verygood.ventures
-//
-// Use of this source code is governed by an MIT-style
-// license that can be found in the LICENSE file or at
-// https://opensource.org/licenses/MIT.
-
 import 'package:core/app.dart';
 import 'package:flutter_falconx_example/core/core.dart';
 import 'package:flutter_falconx_example/src/home/home.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class HomeMainPage extends AppScreen {
+  const HomeMainPage._({required super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => CounterCubit(),
-      child: const HomeView(),
+  static Widget create() {
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) =>
+              HomeProductBloc()..addInitEvent(HomeProductEvent.getProducts),
+        ),
+      ],
+      child: const HomeMainPage._(key: Key('HomeMainPage')),
     );
   }
-}
-
-class HomeView extends AppLocaleScreen {
-  const HomeView({super.key});
 
   @override
-  Widget buildDefault(BuildContext context, AppLocalizations strings) {
-    return Scaffold(
-      appBar: AppBar(title: Text(strings.counterAppBarTitle)),
-      body: SizedBox(
-        width: MediaQuery.of(context).size.width,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const CounterText(),
-            const SizedBox(height: 8),
-            Row(
-              mainAxisSize: MainAxisSize.min,
+  State<HomeMainPage> createState() => _HomeMainPageState();
+}
+
+class _HomeMainPageState extends ScreenLocaleScaffoldBlocStateX<HomeMainPage,
+    HomeProductBloc, Resource<ProductListModel?>> {
+  bool isDisplayGrid = false;
+  @override
+  Widget buildBody(BuildContext context, Resource<ProductListModel?> resource) {
+    showPageLoadingIndicatorFromResource(resource);
+    return Column(
+      children: [
+        SafeArea(
+          bottom: false,
+          child: Padding(
+            padding: AppSize.allInsets,
+            child: Row(
               children: [
-                FloatingActionButton(
-                  onPressed: () => context.read<CounterCubit>().increment(),
-                  child: const Icon(Icons.add),
-                ),
-                const SizedBox(width: 8),
-                FloatingActionButton(
-                  onPressed: () => context.read<CounterCubit>().decrement(),
-                  child: const Icon(Icons.remove),
-                ),
+                _buildTitle(),
+                _buildChangeDisplay(),
               ],
             ),
-            const SizedBox(height: 8),
-          ],
+          ),
         ),
+        Expanded(
+          child: isDisplayGrid
+              ? _buildProductsGrid(resource)
+              : _buildProductsListView(resource),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildChangeDisplay() {
+    return IconButton(
+      icon: Icon(
+        !isDisplayGrid ? Icons.grid_view_rounded : Icons.list_alt_rounded,
+        size: 24,
+        color: AppColors.black,
+      ),
+      onPressed: () {
+        setState(() {
+          isDisplayGrid = !isDisplayGrid;
+        });
+      },
+    );
+  }
+
+  Widget _buildTitle() {
+    return Expanded(
+      child: Text(
+        'สินค้า',
+        style: AppTextStyle.primary.h5.normal,
       ),
     );
   }
-}
 
-class CounterText extends StatelessWidget {
-  const CounterText({super.key});
+  Widget _buildProductsListView(Resource<ProductListModel?> resource) {
+    return ListView.separated(
+      padding: AppSize.listVerticalPadding,
+      shrinkWrap: true,
+      itemCount: resource.data?.productList.length ?? 0,
+      itemBuilder: (_, i) => ProductList(
+        product: resource.data!.productList[i],
+      ),
+      separatorBuilder: (_, __) => AppSize.listSeparator,
+    );
+  }
 
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final count = context.select((CounterCubit cubit) => cubit.state);
-    return Text('$count', style: theme.textTheme.headline1);
+  Widget _buildProductsGrid(Resource<ProductListModel?> resource) {
+    return AppResponsiveGridList(
+      minItemWidth: 190,
+      minItemsPerRow: 2,
+      // padding: AppSize.listVerticalPadding,
+      verticalGridSpacing: AppSize.gapSize,
+      horizontalGridSpacing: AppSize.gapSize,
+      // childAspectRatio: 6 / 10,
+      children: List.generate(
+        resource.data?.productList.length ?? 0,
+        (i) => ProductGrid(
+          product: resource.data!.productList[i],
+        ),
+      ),
+    );
+    // return GridView.count(
+    //   crossAxisCount: 2,
+    //   padding: AppSize.listVerticalPadding,
+    //   mainAxisSpacing: AppSize.gapSize,
+    //   crossAxisSpacing: AppSize.gapSize,
+    //   childAspectRatio: 6 / 10,
+    //   children: List.generate(
+    //     resource.data?.productList.length ?? 0,
+    //     (i) => ProductGrid(
+    //       product: resource.data!.productList[i],
+    //     ),
+    //   ),
+    // );
   }
 }

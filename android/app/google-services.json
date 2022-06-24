@@ -1,0 +1,83 @@
+{
+  "project_info": {
+    "project_number": "532045092431",
+    "firebase_url": "https://falconx-41506-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "falconx-41506",
+    "storage_bucket": "falconx-41506.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:532045092431:android:84e7ebf9b42d0e0c847c3a",
+        "android_client_info": {
+          "package_name": "com.existing.flutter.falconx"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "532045092431-cvh3ef1uf6uq4ek6cabpi70iequudrbv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDc3ZVMxzwInjIV7zKyM4XPPMN_DFR4Ek0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "532045092431-cvh3ef1uf6uq4ek6cabpi70iequudrbv.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "532045092431-j21vjvrm6ftrhqauudh8fpa3uj41eg50.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.existing.flutter.falconx.dev"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:532045092431:android:54484643599817d1847c3a",
+        "android_client_info": {
+          "package_name": "com.existing.flutter.falconx.dev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "532045092431-cvh3ef1uf6uq4ek6cabpi70iequudrbv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDc3ZVMxzwInjIV7zKyM4XPPMN_DFR4Ek0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "532045092431-cvh3ef1uf6uq4ek6cabpi70iequudrbv.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "532045092431-j21vjvrm6ftrhqauudh8fpa3uj41eg50.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.existing.flutter.falconx.dev"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
