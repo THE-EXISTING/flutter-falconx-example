@@ -24,9 +24,20 @@ class HomeMainPage extends AppScreen {
 class _HomeMainPageState extends ScreenLocaleScaffoldBlocStateX<HomeMainPage,
     HomeProductBloc, Resource<ProductListModel?>> {
   bool isDisplayGrid = false;
+
+  @override
+  Widget buildBodyLoading(
+    BuildContext context,
+    Resource<ProductListModel?> state,
+  ) {
+    return const Center(
+      child: CircularProgressIndicator(),
+    );
+  }
+
   @override
   Widget buildBody(BuildContext context, Resource<ProductListModel?> resource) {
-    showPageLoadingIndicatorFromResource(resource);
+    // showPageLoadingIndicatorFromResource(resource);
     return Column(
       children: [
         SafeArea(
@@ -42,9 +53,11 @@ class _HomeMainPageState extends ScreenLocaleScaffoldBlocStateX<HomeMainPage,
           ),
         ),
         Expanded(
-          child: isDisplayGrid
-              ? _buildProductsGrid(resource)
-              : _buildProductsListView(resource),
+          child: resource.data?.productList.isEmpty ?? true
+              ? const Center(child: Text("There's no data"))
+              : isDisplayGrid
+                  ? _buildProductsGrid(resource)
+                  : _buildProductsListView(resource),
         ),
       ],
     );
@@ -101,18 +114,5 @@ class _HomeMainPageState extends ScreenLocaleScaffoldBlocStateX<HomeMainPage,
         ),
       ),
     );
-    // return GridView.count(
-    //   crossAxisCount: 2,
-    //   padding: AppSize.listVerticalPadding,
-    //   mainAxisSpacing: AppSize.gapSize,
-    //   crossAxisSpacing: AppSize.gapSize,
-    //   childAspectRatio: 6 / 10,
-    //   children: List.generate(
-    //     resource.data?.productList.length ?? 0,
-    //     (i) => ProductGrid(
-    //       product: resource.data!.productList[i],
-    //     ),
-    //   ),
-    // );
   }
 }

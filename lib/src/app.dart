@@ -22,6 +22,7 @@ class MyApp extends ApplicationX {
     ]);
 
     EquatableConfig.stringify = BuildConfig.DEBUG;
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
   }
 
   @override
@@ -44,7 +45,11 @@ class _MyAppState extends State<MyApp> {
       //     : dotenv.env['APP_NAME'] as String,
       onGenerateTitle: (context) => dotenv.env['APP_NAME']!,
       localizationsDelegates: L10n.localizationsDelegates,
-      theme: ThemeData(),
+      theme: ThemeData(
+        appBarTheme: const AppBarTheme(
+          systemOverlayStyle: SystemUiOverlayStyle.dark,
+        ),
+      ),
     );
   }
 }
