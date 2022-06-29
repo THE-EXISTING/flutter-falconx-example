@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:core/app.dart';
 
 ///
@@ -6,7 +8,7 @@ import 'package:core/app.dart';
 
 class AppTextStyle {
   static const String _primaryFont = 'Anuphan';
-  static const String _secondary = '';
+  // static const String _secondary = '';
   static const String _numberFont = 'Prompt';
 
   static const _PrimaryTextStyle primary = _PrimaryTextStyle();

@@ -5,7 +5,21 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "flutter_falconx_example",
+      "name": "Main (Desktop)",
+      "request": "launch",
+      "type": "dart",
+      "internalConsoleOptions": "openOnSessionStart"
+      // There's no flavor for desktop.
+    },
+    {
+      "name": "Main TV (dev Mode)",
+      "request": "launch",
+      "type": "dart",
+      "internalConsoleOptions": "openOnSessionStart",
+      "args": ["--flavor", "dev", "--dart-define", "TV_MODE=ON"]
+    },
+    {
+      "name": "Main (dev Mode)",
       "request": "launch",
       "type": "dart",
       "internalConsoleOptions": "openOnSessionStart",
@@ -13,13 +27,13 @@
     },
 
     {
-      "name": "flutter_falconx_example (profile mode)",
+      "name": "Main (profile mode)",
       "request": "launch",
       "type": "dart",
       "flutterMode": "profile"
     },
     {
-      "name": "flutter_falconx_example (release mode)",
+      "name": "Main (release mode)",
       "request": "launch",
       "type": "dart",
       "flutterMode": "release"

@@ -7,6 +7,13 @@ class AppRouter {
   static const String detail = 'detail';
 
   static final GoRouter router = GoRouter(
+    redirect: (state) {
+      if (state.subloc == '/index.html') {
+        return '/';
+      }
+      return null;
+    },
+    urlPathStrategy: UrlPathStrategy.path,
     routes: _routes,
   );
 
