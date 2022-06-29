@@ -36,11 +36,14 @@ class DefaultFirebaseOptions {
           'DefaultFirebaseOptions have not been configured for linux - '
           'you can reconfigure this by running the FlutterFire CLI again.',
         );
-      default:
+      case TargetPlatform.fuchsia:
         throw UnsupportedError(
           'DefaultFirebaseOptions are not supported for this platform.',
         );
     }
+    // throw UnsupportedError(
+    //   'DefaultFirebaseOptions are not supported for this platform.',
+    // );
   }
 
   static const FirebaseOptions web = FirebaseOptions(
@@ -49,7 +52,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '532045092431',
     projectId: 'falconx-41506',
     authDomain: 'falconx-41506.firebaseapp.com',
-    databaseURL: 'https://falconx-41506-default-rtdb.asia-southeast1.firebasedatabase.app',
+    databaseURL:
+        'https://falconx-41506-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'falconx-41506.appspot.com',
   );
 
@@ -58,7 +62,8 @@ class DefaultFirebaseOptions {
     appId: '1:532045092431:android:84e7ebf9b42d0e0c847c3a',
     messagingSenderId: '532045092431',
     projectId: 'falconx-41506',
-    databaseURL: 'https://falconx-41506-default-rtdb.asia-southeast1.firebasedatabase.app',
+    databaseURL:
+        'https://falconx-41506-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'falconx-41506.appspot.com',
   );
 
@@ -67,9 +72,11 @@ class DefaultFirebaseOptions {
     appId: '1:532045092431:ios:12d1baba274eaa88847c3a',
     messagingSenderId: '532045092431',
     projectId: 'falconx-41506',
-    databaseURL: 'https://falconx-41506-default-rtdb.asia-southeast1.firebasedatabase.app',
+    databaseURL:
+        'https://falconx-41506-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'falconx-41506.appspot.com',
-    iosClientId: '532045092431-j21vjvrm6ftrhqauudh8fpa3uj41eg50.apps.googleusercontent.com',
+    iosClientId:
+        '532045092431-j21vjvrm6ftrhqauudh8fpa3uj41eg50.apps.googleusercontent.com',
     iosBundleId: 'com.existing.flutter.falconx.dev',
   );
 
@@ -78,9 +85,11 @@ class DefaultFirebaseOptions {
     appId: '1:532045092431:ios:e7f58220e1a01dee847c3a',
     messagingSenderId: '532045092431',
     projectId: 'falconx-41506',
-    databaseURL: 'https://falconx-41506-default-rtdb.asia-southeast1.firebasedatabase.app',
+    databaseURL:
+        'https://falconx-41506-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'falconx-41506.appspot.com',
-    iosClientId: '532045092431-n7lcc0cjolma75pnji2kg5l8r7dn9fut.apps.googleusercontent.com',
+    iosClientId:
+        '532045092431-n7lcc0cjolma75pnji2kg5l8r7dn9fut.apps.googleusercontent.com',
     iosBundleId: 'com.existing.flutter.falconx',
   );
 }

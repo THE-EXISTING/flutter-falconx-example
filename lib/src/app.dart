@@ -14,6 +14,9 @@ class MyApp extends ApplicationX {
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
     );
+    if (AppPlatform.isTv) {
+      RemoteController().init();
+    }
     await SystemChrome.setPreferredOrientations([
       if (AppPlatform.isTv)
         DeviceOrientation.landscapeLeft

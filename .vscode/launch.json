@@ -4,13 +4,19 @@
   // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
   "configurations": [
-
     {
       "name": "Main (Desktop)",
       "request": "launch",
       "type": "dart",
-      "internalConsoleOptions": "openOnSessionStart",
+      "internalConsoleOptions": "openOnSessionStart"
       // There's no flavor for desktop.
+    },
+    {
+      "name": "Main TV (dev Mode)",
+      "request": "launch",
+      "type": "dart",
+      "internalConsoleOptions": "openOnSessionStart",
+      "args": ["--flavor", "dev", "--dart-define", "TV_MODE=ON"]
     },
     {
       "name": "Main (dev Mode)",
