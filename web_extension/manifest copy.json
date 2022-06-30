@@ -3,7 +3,7 @@
   "version": "1.0",
   "description": "This is a flutter chrome extension",
   "content_security_policy": {
-    "extension_pages": "script-src 'self'; object-src 'self'; script-src-elem 'self';"
+    "extension_pages": "script-src 'self' https://www.gstatic.com/ ; object-src 'self'; connect-src 'self' ;"
   },
   "action": {
     "default_popup": "index.html",

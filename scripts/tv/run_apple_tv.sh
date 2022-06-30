@@ -11,7 +11,7 @@ flutter clean
 
 #build for ios
 flutter pub get
-flutter build ios
+flutter build ios --dart-define TV_MODE=ON
 
 #move ios tvos folders
 sh scripts/_switch_target.sh tvos
